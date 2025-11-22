@@ -1,3 +1,6 @@
 {% extends 'template.html' %}
-{% block title %}About{% endblock %}
-{% block body %}<h1>123</h1>{% endblock %}
+{% block title %}Про проєкт{% endblock %}
+{% block body %}
+<h1>Проєкт: {{ project }}</h1>
+<p>Кількість постів: <strong>{{ posts_count }}</strong></p>
+{% endblock %}

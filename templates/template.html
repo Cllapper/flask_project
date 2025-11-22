@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} · Flask Demo</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 24px; line-height: 1.5; }
+        header { margin-bottom: 24px; }
+        nav a { margin-right: 12px; text-decoration: none; }
+        .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+        .muted { color: #666; font-size: 0.9em; }
+        .tag { display:inline-block; border:1px solid #ccc; border-radius: 999px; padding:2px 8px; margin-right:6px; font-size:0.85em; }
+    </style>
 </head>
 <body>
-    {% block body %}{% endblock %}
+<header>
+<nav>
+<a href="/">Головна</a>
+<a href="/about">Про проєкт</a>
+<a href="/posts/new">Додати пост</a>
+</nav>
+</header>
+{% block body %}{% endblock %}
 </body>
 </html>

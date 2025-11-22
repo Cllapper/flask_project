@@ -1,3 +1,29 @@
 {% extends 'template.html' %}
-{% block title %}Main{% endblock %}
-{% block body %}<h1>Привет</h1>{% endblock %}
+{% block title %}Головна{% endblock %}
+{% block body %}
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<h1>Пости</h1>
+<a href="{{ url_for('create_post') }}">Додати пост</a>
+</div>
+{% if posts and posts|length > 0 %}
+{% for post in posts %}
+<article class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<h2>{{ post.title }}</h2>
+<a href="{{ url_for('edit_post', post_id=post.id) }}">Редагувати</a>
+</div>
+<p class="muted">Автор: {{ post.author }}</p>
+{% if post.tags %}
+<p>
+{% for t in post.tags %}
+<span class="tag">{{ t }}</span>
+{% endfor %}
+</p>
+{% endif %}
+<p>{{ post.body }}</p>
+</article>
+{% endfor %}
+{% else %}
+<p class="muted">Немає постів для відображення.</p>
+{% endif %}
+{% endblock %}

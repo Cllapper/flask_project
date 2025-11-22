@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+{% block title %}{% if mode == 'edit' %}Редагувати{% else %}Новий пост{% endif %}{% endblock %}
+{% block body %}
+<h1>{% if mode == 'edit' %}Редагувати пост{% else %}Додати пост{% endif %}</h1>
+<form method="post">
+<label>Заголовок</label><br>
+<input type="text" name="title" value="{{ post.title }}" style="width:100%;padding:8px;"><br><br>
+<label>Автор</label><br>
+<input type="text" name="author" value="{{ post.author }}" style="width:100%;padding:8px;"><br><br>
+<label>Теги (через кому)</label><br>
+<input type="text" name="tags" value="{{ post.tags }}" style="width:100%;padding:8px;"><br><br>
+<label>Текст</label><br>
+<textarea name="body" rows="8" style="width:100%;padding:8px;">{{ post.body }}</textarea><br><br>
+<button type="submit">Зберегти</button>
+<a href="{{ url_for('main') }}" style="margin-left:10px;">Скасувати</a>
+</form>
+{% endblock %}
