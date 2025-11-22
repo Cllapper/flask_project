@@ -104,5 +104,14 @@ def edit_post(post_id):
     tags_val = ', '.join([t.name for t in post.tags])
     return render_template('post_form.html', mode='edit', post={'id': post.id, 'title': post.title, 'author': post.author, 'body': post.body, 'tags': tags_val})
 
+@app.route('/posts/<int:post_id>/delete', methods=['POST'])
+def delete_post(post_id):
+    post = Post.query.get(post_id)
+    if not post:
+        abort(404)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('main'))
+
 if __name__ == '__main__':
     app.run(debug=True)
