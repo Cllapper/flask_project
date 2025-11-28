@@ -18,6 +18,9 @@
 </div>
 </div>
 <p class="muted">Автор: {{ post.author }}</p>
+{% if post.category_name %}
+<p class="muted">Категорія: {{ post.category_name }}</p>
+{% endif %}
 {% if post.tags %}
 <p>
 {% for t in post.tags %}

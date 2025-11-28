@@ -3,4 +3,12 @@
 {% block body %}
 <h1>Проєкт: {{ project }}</h1>
 <p>Кількість постів: <strong>{{ posts_count }}</strong></p>
+{% if categories and categories|length > 0 %}
+<h2>Категорії</h2>
+<ul>
+{% for c in categories %}
+<li>{{ c.name }} — {{ c.posts_count }} пост(ів)</li>
+{% endfor %}
+</ul>
+{% endif %}
 {% endblock %}
