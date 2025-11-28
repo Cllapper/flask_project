@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+{% block title %}{% if mode == 'login' %}Вхід{% else %}Реєстрація{% endif %}{% endblock %}
+{% block body %}
+<h1>{% if mode == 'login' %}Вхід{% else %}Реєстрація{% endif %}</h1>
+{% if error %}
+<p class="muted" style="color:red;">{{ error }}</p>
+{% endif %}
+<form method="post">
+<label>Логін</label><br>
+<input type="text" name="username" style="width:100%;padding:8px;"><br><br>
+<label>Пароль</label><br>
+<input type="password" name="password" style="width:100%;padding:8px;"><br><br>
+{% if mode == 'register' %}
+<label>Підтвердження пароля</label><br>
+<input type="password" name="confirm" style="width:100%;padding:8px;"><br><br>
+{% endif %}
+<button type="submit">{% if mode == 'login' %}Увійти{% else %}Зареєструватися{% endif %}</button>
+<a href="{{ url_for('main') }}" style="margin-left:10px;">На головну</a>
+</form>
+{% if mode == 'login' %}
+<p style="margin-top:16px;">Немає акаунту? <a href="{{ url_for('register') }}">Зареєструватися</a></p>
+{% else %}
+<p style="margin-top:16px;">Вже є акаунт? <a href="{{ url_for('login') }}">Увійти</a></p>
+{% endif %}
+{% endblock %}
